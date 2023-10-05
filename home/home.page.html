@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Consultar CEP
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label position="floating">CEP</ion-label>
+    <ion-input [(ngModel)]="cepConsulta" type="text"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" id="present-alert" (click)="consultarCep()">Consultar</ion-button>
+  <ion-card *ngIf="mostrarResultadosConsulta">
+    <ion-card-header>
+      Resultados
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Rua</ion-label>
+        <ion-input [(ngModel)]="ruaConsulta" type="text" readonly></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Bairro</ion-label>
+        <ion-input [(ngModel)]="bairroConsulta" type="text" readonly></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Cidade</ion-label>
+        <ion-input [(ngModel)]="cidadeConsulta" type="text" readonly></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Estado</ion-label>
+        <ion-input [(ngModel)]="ufConsulta" type="text" readonly></ion-input>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-item>
+    <ion-label position="floating">UF</ion-label>
+    <ion-input [(ngModel)]="ufPesquisa" type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Cidade</ion-label>
+    <ion-input [(ngModel)]="cidadePesquisa" type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Parte do Nome da Rua</ion-label>
+    <ion-input [(ngModel)]="nomeRuaPesquisa" type="text"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="consultarEndereco()">Consultar Endereço</ion-button>
+
+  <ion-card *ngIf="mostrarResultadosPesquisa">
+    <ion-card-header>
+      Resultados
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item *ngFor="let resultado of resultadosPesquisa">
+        <ion-label>Cep: {{ resultado.cep }}</ion-label>
+        <ion-input [(ngModel)]="resultado.logradouro" type="text" readonly></ion-input>
+      </ion-item>
+      
+    </ion-card-content>
+  </ion-card>
+</ion-content>
